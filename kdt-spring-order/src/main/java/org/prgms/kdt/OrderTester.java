@@ -1,9 +1,12 @@
 package org.prgms.kdt;
 
+import org.prgms.kdt.order.OrderItem;
+import org.prgms.kdt.order.OrderService;
+import org.prgms.kdt.voucher.FixedAmountVoucher;
+import org.prgms.kdt.voucher.VoucherRepository;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.Assert;
 
-import java.text.Annotation;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -15,12 +18,15 @@ public class OrderTester {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfiguration.class);
 
         var customerId = UUID.randomUUID();
-        var orderContext = new AppConfiguration();
+        var voucherRepository = context.getBean(VoucherRepository.class);
+        var voucher = voucherRepository.insert(new FixedAmountVoucher(10L, UUID.randomUUID()));
+
         var orderService = context.getBean(OrderService.class);
         var order= orderService.createOrder(customerId, new ArrayList<OrderItem>() {{
             add(new OrderItem(UUID.randomUUID(), 100L, 1));
-        }});
+        }}, voucher.getVoucherId());
 
-        Assert.isTrue(order.totalAmount() == 100L, MessageFormat.format("totalAmount: {0} is not 100L", order.totalAmount()));
+        Assert.isTrue(order.totalAmount() == 90L,
+                MessageFormat.format("totalAmount: {0} is not 90L", order.totalAmount()));
     }
 }
