@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class OrderTester {
@@ -16,6 +17,15 @@ public class OrderTester {
     public static void main(String[] args) {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfiguration.class);
+
+        var environment = context.getEnvironment();
+        var version = environment.getProperty("kdt.version");
+        var minimumOrderAmount = environment.getProperty("kdt.minimum-order-amount", Integer.class);
+        var supportVendors = environment.getProperty("kdt.support-vendors", List.class);
+
+        System.out.println("version = " + version);
+        System.out.println("minimumOrderAmount = " + minimumOrderAmount);
+        System.out.println("supportVendors = " + supportVendors);
 
         var customerId = UUID.randomUUID();
         var voucherRepository = context.getBean(VoucherRepository.class);
