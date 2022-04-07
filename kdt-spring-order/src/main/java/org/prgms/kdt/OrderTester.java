@@ -1,6 +1,7 @@
 package org.prgms.kdt;
 
 import org.prgms.kdt.order.OrderItem;
+import org.prgms.kdt.order.OrderProperties;
 import org.prgms.kdt.order.OrderService;
 import org.prgms.kdt.voucher.FixedAmountVoucher;
 import org.prgms.kdt.voucher.VoucherRepository;
@@ -9,7 +10,6 @@ import org.springframework.util.Assert;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class OrderTester {
@@ -18,14 +18,22 @@ public class OrderTester {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfiguration.class);
 
-        var environment = context.getEnvironment();
-        var version = environment.getProperty("kdt.version");
-        var minimumOrderAmount = environment.getProperty("kdt.minimum-order-amount", Integer.class);
-        var supportVendors = environment.getProperty("kdt.support-vendors", List.class);
+//        var environment = context.getEnvironment();
+//        var version = environment.getProperty("kdt.version");
+//        var minimumOrderAmount = environment.getProperty("kdt.minimum-order-amount", Integer.class);
+//        var supportVendors = environment.getProperty("kdt.support-vendors", List.class);
+//        var description = environment.getProperty("description");
+//
+//        System.out.println("version = " + version);
+//        System.out.println("minimumOrderAmount = " + minimumOrderAmount);
+//        System.out.println("supportVendors = " + supportVendors);
+//        System.out.println("description = " + description);
 
-        System.out.println("version = " + version);
-        System.out.println("minimumOrderAmount = " + minimumOrderAmount);
-        System.out.println("supportVendors = " + supportVendors);
+        OrderProperties orderProperties = context.getBean(OrderProperties.class);
+        System.out.println("orderProperties.getDescription() = " + orderProperties.getDescription());
+        System.out.println("orderProperties.getVersion() = " + orderProperties.getVersion());
+        System.out.println("orderProperties.getSupportVendors() = " + orderProperties.getSupportVendors());
+        System.out.println("orderProperties.getMinimumOrderAmount() = " + orderProperties.getMinimumOrderAmount());
 
         var customerId = UUID.randomUUID();
         var voucherRepository = context.getBean(VoucherRepository.class);
