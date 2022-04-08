@@ -1,0 +1,11 @@
+17:54:28.065 [main] DEBUG org.prgms.kdt.order.OrderProperties - version = devault-v1.0
+17:54:28.068 [main] DEBUG org.prgms.kdt.order.OrderProperties - minimumOrderAmount = 1
+17:54:28.069 [main] DEBUG org.prgms.kdt.order.OrderProperties - supportVendors = [defaiult]
+17:54:28.069 [main] DEBUG org.prgms.kdt.order.OrderProperties - javaHome = C:\Program Files\Java\jdk-11.0.13
+17:54:28.084 [main] ERROR org.prgms.kdt.OrderTester - logger name => org.prgms.kdt.OrderTester 
+17:54:28.085 [main] WARN  org.prgms.kdt.OrderTester - version devault-v1.0
+17:54:28.085 [main] WARN  org.prgms.kdt.OrderTester - supportVendors [defaiult] 
+17:54:28.086 [main] WARN  org.prgms.kdt.OrderTester - minimumOrder 1 
+17:54:28.086 [main] WARN  org.prgms.kdt.OrderTester - description line 1 hello world
+line 2 xxx
+line 3 
