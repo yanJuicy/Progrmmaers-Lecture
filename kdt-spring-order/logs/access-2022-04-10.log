@@ -1,0 +1,27 @@
+03:23:42.988 [main] INFO  org.prgms.kdt.DemoApplicationTests - Starting DemoApplicationTests using Java 11.0.13 on DESKTOP-CRGU87D with PID 10532 (started by lee in C:\Users\lee\IdeaProjects\programmers-github\kdt-spring-order)
+03:23:43.004 [main] DEBUG org.prgms.kdt.DemoApplicationTests - Running with Spring Boot v2.6.6, Spring v5.3.18
+03:23:43.004 [main] INFO  org.prgms.kdt.DemoApplicationTests - No active profile set, falling back to 1 default profile: "default"
+03:23:43.347 [main] DEBUG org.prgms.kdt.order.OrderProperties - version = devault-v1.0
+03:23:43.347 [main] DEBUG org.prgms.kdt.order.OrderProperties - minimumOrderAmount = 1
+03:23:43.347 [main] DEBUG org.prgms.kdt.order.OrderProperties - supportVendors = [defaiult]
+03:23:43.347 [main] DEBUG org.prgms.kdt.order.OrderProperties - javaHome = C:/Program Files/Java/jdk-11.0.13
+03:23:43.410 [main] INFO  org.prgms.kdt.DemoApplicationTests - Started DemoApplicationTests in 0.648 seconds (JVM running for 1.489)
+03:33:34.178 [main] INFO  org.prgms.kdt.DemoApplicationTests - Starting DemoApplicationTests using Java 11.0.13 on DESKTOP-CRGU87D with PID 13908 (started by lee in C:\Users\lee\IdeaProjects\programmers-github\kdt-spring-order)
+03:33:34.180 [main] DEBUG org.prgms.kdt.DemoApplicationTests - Running with Spring Boot v2.6.6, Spring v5.3.18
+03:33:34.181 [main] INFO  org.prgms.kdt.DemoApplicationTests - No active profile set, falling back to 1 default profile: "default"
+03:33:34.579 [main] DEBUG org.prgms.kdt.order.OrderProperties - version = devault-v1.0
+03:33:34.580 [main] DEBUG org.prgms.kdt.order.OrderProperties - minimumOrderAmount = 1
+03:33:34.581 [main] DEBUG org.prgms.kdt.order.OrderProperties - supportVendors = [defaiult]
+03:33:34.581 [main] DEBUG org.prgms.kdt.order.OrderProperties - javaHome = C:/Program Files/Java/jdk-11.0.13
+03:33:34.641 [main] INFO  org.prgms.kdt.DemoApplicationTests - Started DemoApplicationTests in 0.701 seconds (JVM running for 1.537)
+03:40:20.492 [main] DEBUG org.prgms.kdt.order.OrderProperties - version = devault-v1.0
+03:40:20.492 [main] DEBUG org.prgms.kdt.order.OrderProperties - minimumOrderAmount = 1
+03:40:20.492 [main] DEBUG org.prgms.kdt.order.OrderProperties - supportVendors = [defaiult]
+03:40:20.492 [main] DEBUG org.prgms.kdt.order.OrderProperties - javaHome = C:\Program Files\Java\jdk-11.0.13
+03:40:20.507 [main] ERROR org.prgms.kdt.OrderTester - logger name => org.prgms.kdt.OrderTester 
+03:40:20.507 [main] WARN  org.prgms.kdt.OrderTester - version devault-v1.0
+03:40:20.507 [main] WARN  org.prgms.kdt.OrderTester - supportVendors [defaiult] 
+03:40:20.507 [main] WARN  org.prgms.kdt.OrderTester - minimumOrder 1 
+03:40:20.507 [main] WARN  org.prgms.kdt.OrderTester - description line 1 hello world
+line 2 xxx
+line 3 

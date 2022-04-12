@@ -1,6 +1,5 @@
 package org.prgms.kdt.voucher;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +10,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 @Profile({"local", "default"})
-@Primary
 public class MemoryVoucherRepository implements VoucherRepository {
 
     private final Map<UUID, Voucher> storage = new ConcurrentHashMap<>();

@@ -1,0 +1,8 @@
+09:32:43.545 [main] INFO  org.prgms.kdt.DemoApplicationTests - Starting DemoApplicationTests using Java 11.0.13 on DESKTOP-CRGU87D with PID 6440 (started by lee in C:\Users\lee\IdeaProjects\programmers-github\kdt-spring-order)
+09:32:43.548 [main] DEBUG org.prgms.kdt.DemoApplicationTests - Running with Spring Boot v2.6.6, Spring v5.3.18
+09:32:43.548 [main] INFO  org.prgms.kdt.DemoApplicationTests - No active profile set, falling back to 1 default profile: "default"
+09:32:43.908 [main] DEBUG org.prgms.kdt.order.OrderProperties - version = devault-v1.0
+09:32:43.910 [main] DEBUG org.prgms.kdt.order.OrderProperties - minimumOrderAmount = 1
+09:32:43.910 [main] DEBUG org.prgms.kdt.order.OrderProperties - supportVendors = [defaiult]
+09:32:43.911 [main] DEBUG org.prgms.kdt.order.OrderProperties - javaHome = C:/Program Files/Java/jdk-11.0.13
+09:32:43.965 [main] INFO  org.prgms.kdt.DemoApplicationTests - Started DemoApplicationTests in 0.657 seconds (JVM running for 1.496)
