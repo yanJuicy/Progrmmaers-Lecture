@@ -1,0 +1,11 @@
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/default.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <logger name="org.springframework" level="debug" />
+</configuration>
