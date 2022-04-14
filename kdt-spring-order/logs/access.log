@@ -1,11 +1,42 @@
-17:54:20.211 [main] DEBUG org.prgms.kdt.order.OrderProperties - version = devault-v1.0
-17:54:20.216 [main] DEBUG org.prgms.kdt.order.OrderProperties - minimumOrderAmount = 1
-17:54:20.216 [main] DEBUG org.prgms.kdt.order.OrderProperties - supportVendors = [defaiult]
-17:54:20.217 [main] DEBUG org.prgms.kdt.order.OrderProperties - javaHome = C:\Program Files\Java\jdk-11.0.13
-17:54:20.233 [main] ERROR org.prgms.kdt.OrderTester - logger name => org.prgms.kdt.OrderTester 
-17:54:20.233 [main] WARN  org.prgms.kdt.OrderTester - version devault-v1.0
-17:54:20.234 [main] WARN  org.prgms.kdt.OrderTester - supportVendors [defaiult] 
-17:54:20.234 [main] WARN  org.prgms.kdt.OrderTester - minimumOrder 1 
-17:54:20.234 [main] WARN  org.prgms.kdt.OrderTester - description line 1 hello world
-line 2 xxx
-line 3 
+10:59:43.009 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - statement -> com.mysql.cj.jdbc.ClientPreparedStatement: select * from customers WHERE name = 'tester01'' OR ''a''=''a'
+11:23:07.731 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - statement -> com.mysql.cj.jdbc.ClientPreparedStatement: select * from customers
+11:23:07.731 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> f0333c46-600f-35bd-9b97-e0adcbc79657, name -> new-user2, createdAt -> 2022-04-14T02:22:17
+11:23:07.731 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> cde05550-4e4f-3c12-8227-251e490131ee, name -> new-user, createdAt -> 2022-04-14T02:22:17
+11:23:07.731 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 609e2e4f-a241-3ffd-a3a0-aa8b7733802f, name -> tester00, createdAt -> 2022-04-13T09:05:36
+11:23:07.731 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 8b60301f-941b-3057-95f7-dab4b97f20b7, name -> tester01, createdAt -> 2022-04-13T09:05:36
+11:23:07.731 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> ac2d1a62-0908-3196-8689-2b10369971f7, name -> tester02, createdAt -> 2022-04-13T09:05:37
+11:23:07.736 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: new-user2
+11:23:07.736 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: new-user
+11:23:07.736 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: tester00
+11:23:07.736 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: tester01
+11:23:07.736 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: tester02
+11:25:37.471 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - delete count -> 0
+11:25:37.573 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - statement -> com.mysql.cj.jdbc.ClientPreparedStatement: select * from customers
+11:25:37.574 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> f0333c46-600f-35bd-9b97-e0adcbc79657, name -> new-user2, createdAt -> 2022-04-14T02:22:17
+11:25:37.574 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> cde05550-4e4f-3c12-8227-251e490131ee, name -> new-user, createdAt -> 2022-04-14T02:22:17
+11:25:37.574 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 609e2e4f-a241-3ffd-a3a0-aa8b7733802f, name -> tester00, createdAt -> 2022-04-13T09:05:36
+11:25:37.574 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 8b60301f-941b-3057-95f7-dab4b97f20b7, name -> tester01, createdAt -> 2022-04-13T09:05:36
+11:25:37.575 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> ac2d1a62-0908-3196-8689-2b10369971f7, name -> tester02, createdAt -> 2022-04-13T09:05:37
+11:25:37.575 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: new-user2
+11:25:37.575 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: new-user
+11:25:37.575 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: tester00
+11:25:37.575 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: tester01
+11:25:37.575 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: tester02
+11:26:57.792 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - delete count -> 5
+11:26:57.888 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - statement -> com.mysql.cj.jdbc.ClientPreparedStatement: select * from customers
+11:26:57.888 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 47e86c9d-fb3d-357f-9826-2132272be6bd, name -> new-user, createdAt -> 2022-04-14T02:26:57
+11:26:57.888 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 9114b0fe-0b11-3da8-9b7a-028445710a49, name -> new-user2, createdAt -> 2022-04-14T02:26:57
+11:26:57.891 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: new-user
+11:26:57.892 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: new-user2
+11:29:10.553 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - delete count -> 2
+11:29:10.697 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - statement -> com.mysql.cj.jdbc.ClientPreparedStatement: select * from customers
+11:29:10.698 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 104783de-2388-301c-bc80-b59ae353fcfb, name -> new-user2, createdAt -> 2022-04-14T02:29:10
+11:29:10.698 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> eff124a8-4936-33a1-90b2-80f8812efb93, name -> new-user, createdAt -> 2022-04-14T02:29:10
+11:29:10.699 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: new-user2
+11:29:10.700 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: new-user
+11:30:26.409 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - delete count -> 2
+11:30:26.534 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - statement -> com.mysql.cj.jdbc.ClientPreparedStatement: select * from customers
+11:30:26.534 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 25ae6d82-845d-3a67-8dda-2d103b6e1fdd, name -> update-user2, createdAt -> 2022-04-14T02:30:26
+11:30:26.534 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 1e665493-5efe-324a-93f8-5e572355632f, name -> new-user, createdAt -> 2022-04-14T02:30:26
+11:30:26.537 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: update-user2
+11:30:26.538 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - Found name: new-user

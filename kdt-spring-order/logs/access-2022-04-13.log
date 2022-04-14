@@ -1,0 +1,3 @@
+21:41:48.647 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 609e2e4f-a241-3ffd-a3a0-aa8b7733802f, name -> tester00
+21:41:48.651 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> 8b60301f-941b-3057-95f7-dab4b97f20b7, name -> tester01
+21:41:48.651 [main] INFO  org.prgms.kdt.JdbcCustomerRepository - customer id -> ac2d1a62-0908-3196-8689-2b10369971f7, name -> tester02
