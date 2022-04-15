@@ -1,10 +1,13 @@
 package org.prgms.kdt;
 
+import org.prgms.kdt.customer.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -109,20 +112,62 @@ public class JdbcCustomerRepository {
         return 0;
     }
 
+    public void transactionTest(Customer customer) {
+        String updateNameSql = "update customers set name = ? where customer_id =  uuid_to_bin(?)";
+        String updateEmailSql = "update customers set email = ? where customer_id =  uuid_to_bin(?)";
+
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/order_mgmt", "root", "gkswn14520");
+            connection.setAutoCommit(false);
+
+            try (
+                    var updateNameStatement = connection.prepareStatement(updateNameSql);
+                    var updateEmailStatement = connection.prepareStatement(updateEmailSql);
+            ) {
+                updateNameStatement.setString(1, customer.getName());
+                updateNameStatement.setBytes(2, customer.getCustomerId().toString().getBytes());
+                updateNameStatement.executeUpdate();
+
+                updateEmailStatement.setString(1, customer.getEmail());
+                updateEmailStatement.setBytes(2, customer.getCustomerId().toString().getBytes());
+                updateEmailStatement.executeUpdate();
+                connection.setAutoCommit(true);
+            } catch (SQLException throwable) {
+                logger.error("Got error while closing connection ", throwable);
+            }
+        } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                    connection.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void main(String[] args) {
         var customerRepository = new JdbcCustomerRepository();
 
-        var count = customerRepository.deleteAllCustomers();
-        logger.info("delete count -> {}", count);
+        customerRepository.transactionTest(
+                new Customer(UUID.fromString("399145e3-bb9b-11ec-b247-0242ac110002"), "update-user",
+                        "new-user2@gmail.com", LocalDateTime.now())
+        );
 
-        customerRepository.insertCustomer(UUID.randomUUID(), "new-user", "new-user@gmail.com");
-        var customer2 = UUID.randomUUID();
-        customerRepository.insertCustomer(customer2, "new-user2", "new-user2@gmail.com");
-
-        customerRepository.updateCustomer(customer2, "update-user2");
-
-        var names = new JdbcCustomerRepository().findAllNames();
-        names.forEach(v -> logger.info("Found name: {}", v));
+//        var count = customerRepository.deleteAllCustomers();
+//        logger.info("delete count -> {}", count);
+//
+//        customerRepository.insertCustomer(UUID.randomUUID(), "new-user", "new-user@gmail.com");
+//        var customer2 = UUID.randomUUID();
+//        customerRepository.insertCustomer(customer2, "new-user2", "new-user2@gmail.com");
+//
+//        customerRepository.updateCustomer(customer2, "update-user2");
+//
+//        var names = new JdbcCustomerRepository().findAllNames();
+//        names.forEach(v -> logger.info("Found name: {}", v));
     }
 
 }
