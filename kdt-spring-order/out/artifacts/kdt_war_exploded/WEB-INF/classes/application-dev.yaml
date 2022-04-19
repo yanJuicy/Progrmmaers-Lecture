@@ -1,0 +1,11 @@
+spring.config.activate.on-profile: dev
+kdt:
+  version: "v1.0-dev"
+  minimum-order-amount: 1
+  support-vendors:
+    - dev-a
+    - dev-b
+  description: |-
+    line 1 hello world
+    line 2 xxx
+    line 3

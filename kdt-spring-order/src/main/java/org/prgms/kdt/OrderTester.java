@@ -12,10 +12,15 @@ import org.springframework.boot.ansi.AnsiOutput;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.Assert;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.channels.Channels;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class OrderTester {
 
@@ -48,18 +53,23 @@ public class OrderTester {
         logger.warn("minimumOrder {} ", orderProperties.getMinimumOrderAmount());
         logger.warn("description {} ", orderProperties.getDescription());
 
-//        var resource = context.getResource("application.yaml");
-//        var resource2 = context.getResource("file:sample.txt");
-//        var resource3 = context.getResource("https://stackoverflow.com");
-//        var readableByteChannel = Channels.newChannel(resource3.getURL().openStream());
-//        var bufferedReader = new BufferedReader(Channels.newReader(readableByteChannel, StandardCharsets.UTF_8));
-//        var lines = bufferedReader.lines();
-//        var contents = lines.collect(Collectors.joining("\n"));
-//        System.out.println(contents);
-//
-//        System.out.println("resource = " + resource3.getClass().getCanonicalName());
-//        var strings = Files.readAllLines(resource2.getFile().toPath());
-//        System.out.println("Strings = " + strings.stream().reduce("", (a, b) -> a + "\n" + b));
+        // Resource 가져오기
+        var resource = context.getResource("application.yaml");
+        var file = resource.getFile();
+        var strings = Files.readAllLines(file.toPath());
+        System.out.println("Strings = " + strings.stream().reduce("", (a, b) -> a + "\n" + b));
+
+        var resource2 = context.getResource("file:sample.txt");
+        strings = Files.readAllLines(resource2.getFile().toPath());
+        System.out.println("Strings = " + strings.stream().reduce("", (a, b) -> a + "\n" + b));
+
+        var resource3 = context.getResource("https://stackoverflow.com");
+        var readableByteChannel = Channels.newChannel(resource3.getURL().openStream());
+        var bufferedReader = new BufferedReader(Channels.newReader(readableByteChannel, StandardCharsets.UTF_8));
+        var lines = bufferedReader.lines();
+        var contents = lines.collect(Collectors.joining("\n"));
+        System.out.println(contents);
+        System.out.println("resource = " + resource3.getClass().getCanonicalName());
 
         var customerId = UUID.randomUUID();
         var voucherRepository = context.getBean(VoucherRepository.class);
