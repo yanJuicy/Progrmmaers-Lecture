@@ -1,5 +1,6 @@
 package org.prgms.kdt.voucher;
 
+import org.prgms.kdt.aop.TrackTime;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
@@ -20,6 +21,7 @@ public class JdbcVoucherRepository implements VoucherRepository {
     }
 
     @Override
+    @TrackTime
     public Voucher insert(Voucher voucher) {
         storage.put(voucher.getVoucherId(), voucher);
         return voucher;

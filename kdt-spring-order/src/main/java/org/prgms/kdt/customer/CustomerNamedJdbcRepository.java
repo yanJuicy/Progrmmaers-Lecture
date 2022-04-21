@@ -129,6 +129,10 @@ public class CustomerNamedJdbcRepository implements CustomerRepository {
         }
     }
 
+    public void testTransaction(Customer customer) {
+
+    }
+
     @Override
     public void deleteAll() {
         jdbcTemplate.update("delete from customers", Collections.emptyMap());
@@ -149,8 +153,4 @@ public class CustomerNamedJdbcRepository implements CustomerRepository {
         var byteBuffer = ByteBuffer.wrap(bytes);
         return new UUID(byteBuffer.getLong(), byteBuffer.getLong());
     }
-
-
-
-
 }
