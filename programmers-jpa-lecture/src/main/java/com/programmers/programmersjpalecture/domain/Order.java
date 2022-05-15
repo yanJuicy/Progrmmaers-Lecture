@@ -30,7 +30,7 @@ public class Order extends BaseEntity {
     @Column(name = "member_id", insertable = false, updatable = false)
     private Long memberId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "member_id", referencedColumnName = "id")
     private Member member;
 
@@ -49,6 +49,5 @@ public class Order extends BaseEntity {
     public void addOrderItem(OrderItem orderItem) {
         orderItem.setOrder(this);
     }
-
 
 }
