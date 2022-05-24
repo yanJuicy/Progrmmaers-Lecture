@@ -4,7 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.AccessDecisionManager;
+import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.expression.SecurityExpressionHandler;
+import org.springframework.security.access.vote.UnanimousBased;
 import org.springframework.security.authentication.AuthenticationTrustResolverImpl;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,9 +18,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.access.expression.WebExpressionVoter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -25,9 +31,21 @@ public class WebSecurityConfigure extends WebSecurityConfigurerAdapter{
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
+    public WebSecurityConfigure() {
+        SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
+    }
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/assets/**");
+    }
+
+    @Bean
+    public AccessDecisionManager accessDecisionManager() {
+        List<AccessDecisionVoter<?>> decisionVoters = new ArrayList<>();
+        decisionVoters.add(new WebExpressionVoter());
+        decisionVoters.add(new OddAdminVoter(new AntPathRequestMatcher("/admin")));
+        return new UnanimousBased(decisionVoters);
     }
 
     @Bean
@@ -50,11 +68,14 @@ public class WebSecurityConfigure extends WebSecurityConfigurerAdapter{
                 .antMatchers("/me").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/admin").access("isFullyAuthenticated() and hasRole('ADMIN') and oddAdmin")
                 .anyRequest().permitAll()
-                .expressionHandler(expressionHandler())
+                .accessDecisionManager(accessDecisionManager())
                 .and()
             .formLogin()
                 .defaultSuccessUrl("/")
                 .permitAll()
+                .and()
+            // Basic Authenticaion 설정
+            .httpBasic()
                 .and()
             .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -97,7 +118,4 @@ public class WebSecurityConfigure extends WebSecurityConfigurerAdapter{
         ;
     }
 
-    public SecurityExpressionHandler<FilterInvocation> expressionHandler() {
-        return new CustomWebSecurityExpressionHandler(new AuthenticationTrustResolverImpl(), "ROLE_");
-    }
 }
